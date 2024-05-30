@@ -1,0 +1,161 @@
+ DOJO
+ 
+ 
+ 
+DOJO_VERSION=0.8.0
+wget -O dojo https://github.com/kudulab/dojo/releases/download/${DOJO_VERSION}/dojo_linux_amd64
+sudo mv dojo /usr/local/bin
+sudo chmod +x /usr/local/bin/dojo
+
+
+
+MAKE (make is a build automation tool , it builds automaaitcally executes the program & libraries from source code by reading files calls make files)
+
+sudo apt update && sudo apt install make
+
+
+DOCKER-DEAMON
+
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt update &&sudo apt install docker-ce
+sudo usermod -aG docker ${user}
+newgrp docker
+
+
+
+TERRAFORM 
+
+curl -LO https://releases.hashicorp.com/terraform/0.12.6/terraform_0.12.6_linux_amd64.zip
+
+sudo apt install unzip
+unzip terraform_0.12.6_linux_amd64.zip
+sudo mv terraform /usr/local/bin/
+terraform --version
+
+
+SSH-KEYGEN
+
+
+AWSCLI
+
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+aws --version
+
+
+
+
+PROCESS
+
+-----------------------------------
+sftp -i "<key.pem>" <user>@<public ip>
+put <copy path> (put -r <copy path>)
+bye
+
+export CODE_PREFIX=Bijjam
+unzip infra-problem-2.1.0.zip
+cd joi-news-aws-na/
+make localize
+export CODE_PREFIX=Bijjam
+printenv
+make base.infra
+
+error
+--------------
+
+CODE_PREFIX=Bijjam
+ make localize
+export CODE_PREFIX=Bijjam
+printenv
+make base.infra
+
+ERROR
+----------------
+create backend s3 bucket name will be changes
+
+make backend-support.infra
+make base.infra
+
+error
+-----
+it cannot takes newsBijjam
+
+Error: error creating ECR repository: InvalidParameterException: Invalid parameter at 'repositoryName' failed to satisfy constraint: 'must satisfy regular expression '(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._-][a-z0-9]+)*'
+
+i will give ECR name in small letters "newsbijjam"
+
+* make news.infra
+
+error 
+------
+
+* 
+Error: NoSuchBucket: The specified bucket does not exist
+        status code: 404, request id: F6VMJWXCKPKMS5DX, host id: KGFUoqxVjYxi9gZFJfxOMz9c90egk9fzJRbrs8sjD4pFRGp751ME9U9gSNuGNxHy5FbJSFoav4o=
+		
+		
+		here we change the s3 bucket name 
+		
+		
+MAKE NEWS.INFRA
+
+ERROR
+--------------
+
+Error: Error describing SSM parameter: ParameterNotFound:
+        status code: 400, request id: 230aff4e-72ed-42c8-a2b5-631d9fbc8b93
+
+  on main.tf line 1, in data "aws_ssm_parameter" "vpc_id":
+   1: data "aws_ssm_parameter" "vpc_id" {
+   
+   
+   -------------------------------------
+    varables.tf 
+	
+	we cahnge the default name : newsbijjam
+	
+	
+* in aws account you search for parameter stores
+
+* now 
+
+build the docker images and push into the container regestries
+
+using ecr push commands
+
+docker image build -t <imagename> <dockerfile path>
+
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 533267075021.dkr.ecr.us-east-1.amazonaws.com
+
+docker tag <image name> 533267075021.dkr.ecr.us-east-1.amazonaws.com/newsbijjam-newsfeed:latest
+
+docker push 533267075021.dkr.ecr.us-east-1.amazonaws.com/newsbijjam-newsfeed:latest
+
+
+
+
+
+* make news.infra
+
+
+depends on placed then only it will be created
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
